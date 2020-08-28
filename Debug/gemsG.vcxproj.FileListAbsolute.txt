@@ -1,0 +1,4 @@
+C:\Users\kozli\OneDrive\Документы\Visual Studio 2015\Projects\gemsG\Debug\gemsG.exe
+C:\Users\kozli\OneDrive\Документы\Visual Studio 2015\Projects\gemsG\Debug\gemsG.pdb
+D:\Новая папка\Gems2020\Debug\gemsG.exe
+D:\Новая папка\Gems2020\Debug\gemsG.pdb

@@ -1,0 +1,66 @@
+﻿  Game.cpp
+D:\Новая папка\Gems2020\Game.cpp(91,21): warning C4018: '<': signed/unsigned mismatch
+D:\Новая папка\Gems2020\Game.cpp(96,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Новая папка\Gems2020\Game.cpp(96,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Новая папка\Gems2020\Game.cpp(106,21): warning C4018: '<': signed/unsigned mismatch
+D:\Новая папка\Gems2020\Game.cpp(155,21): warning C4018: '<': signed/unsigned mismatch
+D:\Новая папка\Gems2020\Game.cpp(158,86): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Новая папка\Gems2020\Game.cpp(158,58): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Новая папка\Gems2020\Game.cpp(282,23): warning C4018: '<': signed/unsigned mismatch
+D:\Новая папка\Gems2020\Game.cpp(311,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Новая папка\Gems2020\Game.cpp(311,34): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Новая папка\Gems2020\Game.cpp(312,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Новая папка\Gems2020\Game.cpp(312,34): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+  GameObject.cpp
+  Source.cpp
+  SupportingFunctions.cpp
+  Generating Code...
+  gemsG.vcxproj -> D:\Новая папка\Gems2020\Debug\gemsG.exe
