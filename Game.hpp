@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <vector>
 #include <memory>
+#include <iostream>
 #include "SupportingFunctions.hpp"
 class GameEventBox {
 	bool _locked;

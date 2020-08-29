@@ -44,7 +44,6 @@ void Game::Launch() {
 			else if (ev.type == sf::Event::MouseButtonPressed && ev.key.code == sf::Mouse::Left && Box->PerformCatching()) {
 				Box->IncreaseNumOfClicks();
 				InstantMousePosition = sf::Mouse::getPosition(Window);
-				//printf("%i, %i ", InstantMousePosition.x, InstantMousePosition.y);
 			}
 		}
 		Window.clear(BACKGROUND_COLOR);
@@ -181,26 +180,23 @@ void Game::ShowNewBlocks() {
 void Game::ProcessBonuses() {
 	if (Box->BonusHandlingActive() == false)
 		return;
-	if (!Box->IsBombActive() && !Box->IsMiniBombActive()) {
-		Box->StopHandlingBonuses();
-		Box->ConfirmCombinationChecking();
-		return;
-	}
+	InvokeBonus();
 	if (Box->IsMiniBombActive()) {
 		for (int i = 0; i < 2; i++) {
 			auto block = FindElement(sf::Vector2i((TABLE_HEIGHT - 1) & rand(), (TABLE_WIDTH - 1) & rand()));
 			block->SetColor(COLOR_MODES[rand() % 7]);
 		}
+		Box->DeactivateMiniBomb();
 	}
-	else {
+	else if (Box->IsBombActive()){
 		for (int i = 0; i < 5; i++) {
 			auto block = FindElement(sf::Vector2i((TABLE_HEIGHT - 1) & rand(), (TABLE_WIDTH - 1) & rand()));
 			block->AddInCombination();
 		}
+		Box->DeactivateBomb();
 	}
+	Box->StopHandlingBonuses();
 	Box->ConfirmCombinationChecking();
-	Box->DeactivateBomb();
-	Box->DeactivateMiniBomb();
 }
 bool Game::MarkCombinations() {
 	bool detected = false;
