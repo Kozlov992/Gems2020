@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.hpp"
+#include "Tile.hpp"
 #include "GameParamerts.hpp"
 #include <cstdio>
 #include <vector>
@@ -80,13 +80,13 @@ class Game {
 	sf::Vector2i InstantMousePosition;
 	sf::Vector2i MousePos1;
 	sf::Vector2i MousePos2;
-	std::shared_ptr<GameObject> firstlyClickedBlock;
+	std::shared_ptr<Tile> firstlyClickedBlock;
 	std::vector<std::vector<std::vector<sf::Vector2i>>> combinationsTable;
 	std::vector<std::vector<sf::Vector2i>> ordered;
-	std::vector<std::vector<std::shared_ptr<GameObject>>> blocks;
+	std::vector<std::vector<std::shared_ptr<Tile>>> blocks;
 	void DrawTable(sf::RenderWindow& Window);
 	std::shared_ptr<GameEventBox> Box;
-	std::shared_ptr<GameObject> FindElement(sf::Vector2i& indices);
+	std::shared_ptr<Tile> FindElement(sf::Vector2i& indices);
 	void ProcessMouseClicks();
 	//bool _in_combination(int level, sf::Vector2i& position, std::vector<sf::Vector2i>& isVisiting, sf::Color col);
 	void DetectCombinations();

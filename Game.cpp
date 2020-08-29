@@ -1,6 +1,4 @@
 #include "Game.hpp"
-#include <stack>
-#include <tuple>
 static bool resolved(sf::Vector2i& pos) {
 	return pos.x == -1 && pos.y == -1;
 }
@@ -16,8 +14,8 @@ Game::Game() {
 		combinationsTable[i].resize(TABLE_WIDTH);
 	for (int i = 0; i < TABLE_HEIGHT; i++) {
 		for (int j = 0; j < TABLE_WIDTH; j++) {
-			std::shared_ptr<GameObject> block;
-			block = std::make_shared<GameObject>(blockSize, position, COLOR_MODES[rand() % 7], sf::Vector2i(i, j));
+			std::shared_ptr<Tile> block;
+			block = std::make_shared<Tile>(blockSize, position, COLOR_MODES[rand() % 7], sf::Vector2i(i, j));
 			blocks[i].push_back(block);
 			position.x += delta.x;
 		}
@@ -145,7 +143,7 @@ void Game::DetectCombinations() {
 void Game::AdjustNewBlocks() {
 	if (Box->IsNewBlocksAdjustment() == false)
 		return;
-	std::vector<std::vector<std::shared_ptr<GameObject>>> ClearBlocks(TABLE_WIDTH);
+	std::vector<std::vector<std::shared_ptr<Tile>>> ClearBlocks(TABLE_WIDTH);
 	for (int i = 0; i < TABLE_HEIGHT; i++)
 		for (int j = 0; j < TABLE_WIDTH; j++) {
 			if (blocks[i][j]->InCombination())
@@ -204,32 +202,13 @@ void Game::ProcessBonuses() {
 	Box->DeactivateBomb();
 	Box->DeactivateMiniBomb();
 }
-/*bool Game::_in_combination(int level, sf::Vector2i& position, std::vector<sf::Vector2i>& isVisiting, sf::Color col) {
-	if (support::IsIn(position, isVisiting) || support::IsOutOfBounds(position))
-		return false;
-	isVisiting.push_back(position);
-	auto block = FindElement(position);
-	if (block->GetColor() == col)
-		level++;
-	else
-		return false;
-	bool path1 = _in_combination(level, sf::Vector2i(position.x + 1, position.y), isVisiting, col);
-	bool path2 = _in_combination(level, sf::Vector2i(position.x - 1, position.y), isVisiting, col);
-	bool path3 = _in_combination(level, sf::Vector2i(position.x, position.y + 1), isVisiting, col);
-	bool path4 = _in_combination(level, sf::Vector2i(position.x, position.y - 1), isVisiting, col);
-	if ((level >= SUFFICIENT_ORDER_OF_COMBINATION) || (path1 || path2 || path3 || path4)) {
-		block->AddInCombination();
-		return true;
-	}
-	return false;
-}*/
 bool Game::MarkCombinations() {
 	bool detected = false;
-	std::shared_ptr<GameObject> currentElement;
-	std::shared_ptr<GameObject> upper;
-	std::shared_ptr<GameObject> lower;
-	std::shared_ptr<GameObject> left;
-	std::shared_ptr<GameObject> right;
+	std::shared_ptr<Tile> currentElement;
+	std::shared_ptr<Tile> upper;
+	std::shared_ptr<Tile> lower;
+	std::shared_ptr<Tile> left;
+	std::shared_ptr<Tile> right;
 	std::vector<sf::Vector2i> uni;
 	for (int i = 0; i < TABLE_HEIGHT; i++)
 		for (int j = 0; j < TABLE_WIDTH; j++) {
@@ -292,7 +271,7 @@ bool Game::MarkCombinations() {
 		}
 	return detected;
 }
-std::shared_ptr<GameObject> Game::FindElement(sf::Vector2i& indices) {
+std::shared_ptr<Tile> Game::FindElement(sf::Vector2i& indices) {
 	for (int i = 0; i < TABLE_HEIGHT; i++)
 		for (int j = 0; j < TABLE_WIDTH; j++) {
 			auto temp = blocks[i][j]->getTableIndices();

@@ -61,6 +61,6 @@ D:\Новая папка\Gems2020\Game.cpp(312,34): warning C4244: 'argument': c
           ]
   GameObject.cpp
   Source.cpp
-  SupportingFunctions.cpp
   Generating Code...
+  LINK : D:\Новая папка\Gems2020\Debug\gemsG.exe not found or not built by the last incremental link; performing full link
   gemsG.vcxproj -> D:\Новая папка\Gems2020\Debug\gemsG.exe
