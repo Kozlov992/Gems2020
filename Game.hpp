@@ -1,10 +1,8 @@
 #pragma once
 #include "Tile.hpp"
 #include "GameParamerts.hpp"
-#include <cstdio>
 #include <vector>
 #include <memory>
-#include <iostream>
 #include "SupportingFunctions.hpp"
 class GameEventBox {
 	bool _locked;
