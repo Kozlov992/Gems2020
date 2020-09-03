@@ -1,5 +1,5 @@
 #include "SupportingFunctions.hpp"
-bool support::IsIn(sf::Vector2i& position, std::vector<sf::Vector2i>& vector) {
+bool support::IsIn(const sf::Vector2i& position, const std::vector<sf::Vector2i>& vector) {
 	if (vector.empty())
 		return false;
 	for (auto element : vector) {
@@ -8,10 +8,10 @@ bool support::IsIn(sf::Vector2i& position, std::vector<sf::Vector2i>& vector) {
 	}
 	return false;
 }
-bool support::IsOutOfBounds(sf::Vector2i& position) {
+bool support::IsOutOfBounds(const sf::Vector2i& position) {
 	return (position.x < 0 || position.y < 0) || (position.x >= TABLE_HEIGHT || position.y >= TABLE_WIDTH);
 }
-std::vector<sf::Vector2i> support::FindUnion(std::vector<sf::Vector2i>& vector1, std::vector<sf::Vector2i>& vector2) {
+std::vector<sf::Vector2i> support::FindUnion(const std::vector<sf::Vector2i>& vector1, const std::vector<sf::Vector2i>& vector2) {
 	std::vector<sf::Vector2i> answer;
 	if (vector1.empty()) {
 		answer = vector2;

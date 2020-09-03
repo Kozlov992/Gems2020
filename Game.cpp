@@ -267,7 +267,7 @@ bool Game::MarkCombinations() {
 		}
 	return detected;
 }
-std::shared_ptr<Tile> Game::FindElement(sf::Vector2i& indices) {
+std::shared_ptr<Tile> Game::FindElement(const sf::Vector2i& indices) {
 	for (int i = 0; i < TABLE_HEIGHT; i++)
 		for (int j = 0; j < TABLE_WIDTH; j++) {
 			auto temp = blocks[i][j]->getTableIndices();

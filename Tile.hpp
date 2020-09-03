@@ -7,17 +7,17 @@ private:
 	bool _inCombination;
 	int _opacity;
 public:
-	int Opacity() { return _opacity; }
+	int Opacity() const { return _opacity; }
 	void ReduceOpacityBy(int number);
 	void AddInCombination() { _inCombination = true; }
-	bool InCombination() { return _inCombination; }
+	bool InCombination() const { return _inCombination; }
 	void DeleteFromCombination() { _inCombination = false; }
-	void SetColor(sf::Color newColor);
-	sf::Color GetColor();
-	sf::Vector2f getInstantPosition();
-	sf::Vector2i getTableIndices() { return tablePosition; }
-	void setPosition(sf::Vector2f& position);
+	void SetColor(const sf::Color& newColor);
+	sf::Color Tile::GetColor() const { return rectangle.getFillColor(); }
+	sf::Vector2f Tile::getInstantPosition() const { return rectangle.getPosition(); }
+	sf::Vector2i getTableIndices() const { return tablePosition; }
+	void setPosition(const sf::Vector2f& position);
 	void draw(sf::RenderWindow& window);
-	void setIndices(sf::Vector2i& newIndices);
-	Tile(sf::Vector2f& size, sf::Vector2f& position, sf::Color color, sf::Vector2i& tablePos, bool status = false);
+	void setIndices(const sf::Vector2i& newIndices);
+	Tile(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color, const sf::Vector2i& tablePos, bool status = false);
 };
