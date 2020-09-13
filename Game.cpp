@@ -15,7 +15,7 @@ Game::Game() {
 	for (int i = 0; i < TABLE_HEIGHT; i++) {
 		for (int j = 0; j < TABLE_WIDTH; j++) {
 			std::shared_ptr<Tile> block;
-			block = std::make_shared<Tile>(blockSize, position, COLOR_MODES[rand() % 7], sf::Vector2i(i, j));
+			block = std::make_shared<Tile>(blockSize, position, COLOR_MODES[rand() % NUMBER_OF_COLORS], sf::Vector2i(i, j));
 			blocks[i].push_back(block);
 			position.x += delta.x;
 		}
@@ -27,7 +27,7 @@ Game::Game() {
 			combinationsTable[i][j].push_back(blocks[i][j]->getTableIndices());
 }
 void Game::InvokeBonus() {
-	int bonustype = rand() % 3;
+	int bonustype = rand() % 3; // 3 - number of possibilities: 2 - no bonus dropped, 1 - mini bomb dropped, 0 - bomb dropped
 	if (bonustype == 0)
 		Box->ActivateBomb();
 	else if (bonustype == 1)
@@ -151,7 +151,7 @@ void Game::AdjustNewBlocks() {
 	for (int j = 0; j < TABLE_WIDTH; j++) {
 		for (int i = 0; i < ClearBlocks[j].size(); i++) {
 			ClearBlocks[j][i]->setIndices(sf::Vector2i(i, j));
-			ClearBlocks[j][i]->SetColor(COLOR_MODES[rand() % 7]);
+			ClearBlocks[j][i]->SetColor(COLOR_MODES[rand() % NUMBER_OF_COLORS]);
 			ClearBlocks[j][i]->setPosition(sf::Vector2f(INITIAL_X + BLOCK_SIDE * j, INITIAL_Y + BLOCK_SIDE * i));
 		}
 	}
@@ -167,9 +167,9 @@ void Game::ShowNewBlocks() {
 	bool end = true;
 	for (int i = 0; i < TABLE_HEIGHT; i++)
 		for (int j = 0; j < TABLE_WIDTH; j++) {
-			if (blocks[i][j]->Opacity() < 255) {
-				blocks[i][j]->ReduceOpacityBy(-OPACITY_FALL);
-				end = false;
+			if (blocks[i][j]->Opacity() < 255) {	//255 is a maximum possible opacity of a graphical element
+				blocks[i][j]->ReduceOpacityBy(-OPACITY_FALL); // reducing opacity of element by -NUMBER is equal to
+				end = false;								  // raising its opacity by NUMBER
 			}
 		}
 	if (end) {
@@ -182,14 +182,14 @@ void Game::ProcessBonuses() {
 		return;
 	InvokeBonus();
 	if (Box->IsMiniBombActive()) {
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 2; i++) { // 2 - number of tiles whose color has to be changed 
 			auto block = FindElement(sf::Vector2i((TABLE_HEIGHT - 1) & rand(), (TABLE_WIDTH - 1) & rand()));
-			block->SetColor(COLOR_MODES[rand() % 7]);
+			block->SetColor(COLOR_MODES[rand() % NUMBER_OF_COLORS]);
 		}
 		Box->DeactivateMiniBomb();
 	}
 	else if (Box->IsBombActive()){
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) { // 5 - number of tiles that have to be deleted
 			auto block = FindElement(sf::Vector2i((TABLE_HEIGHT - 1) & rand(), (TABLE_WIDTH - 1) & rand()));
 			block->AddInCombination();
 		}

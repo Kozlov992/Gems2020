@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "GameParamerts.hpp"
 class Tile {
 private:
 	sf::RectangleShape rectangle;

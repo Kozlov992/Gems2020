@@ -4,11 +4,11 @@ Tile::Tile(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Col
 	rectangle.setPosition(position);
 	rectangle.setFillColor(color);
 	rectangle.setOutlineColor(sf::Color::Black);
-	rectangle.setOutlineThickness(1);
+	rectangle.setOutlineThickness(OUTLINE_THICKNESS);
 	tablePosition.x = tablePos.x;
 	tablePosition.y = tablePos.y;
 	_inCombination = status;
-	_opacity = 255;
+	_opacity = 255;	//255 is a maximum possible opacity of a graphical element
 }
 void Tile::ReduceOpacityBy(int number) {
 	_opacity -= number;
